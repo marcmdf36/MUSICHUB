@@ -13,6 +13,8 @@ Every day, MusicHub:
 3. **Checks the history** in a local SQLite database to ensure no song is ever repeated
 4. **Sends a styled email** to a list of recipients with album art, Spotify links, and the curator's notes
 
+📌 The agent currently generates recommendations and emails in Spanish. Language can be adjusted in the system prompt (`agent/prompts.py`).
+
 ## Tech Stack
 
 | Component | Technology |
