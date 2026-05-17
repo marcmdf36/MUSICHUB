@@ -7,34 +7,41 @@
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap');
   </style>
 </head>
-<body style="margin:0; padding:0; background-color:#E8E0EF; font-family:'Lato', Georgia, serif;">
+<body style="margin:0; padding:0; background-color:#c8b8d8; font-family:'Lato', Georgia, serif;">
 
   <!-- Outer wrapper -->
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#E8E0EF; padding:32px 0;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#c8b8d8; padding:32px 0;">
     <tr>
       <td align="center">
 
         <!-- Card -->
-        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px; width:100%; background-color:#F5F0F7; border-radius:14px; overflow:hidden; box-shadow:0 4px 32px rgba(60,10,100,0.13);">
+        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px; width:100%; background-color:#F5F0F7; border-radius:14px; overflow:hidden; box-shadow:0 4px 32px rgba(60,10,100,0.18);">
 
           <!-- ─── HEADER ─── -->
           <tr>
-            <td style="padding:0; position:relative; text-align:center; background-color:#1a0a2e;">
-              <!-- Imagen de fondo -->
-              <img src="{{header_image_url}}" width="600" alt="" style="display:block; width:100%; max-width:600px; height:auto; opacity:0.85;" />
-              <!-- Overlay oscuro para legibilidad -->
-              <table width="100%" cellpadding="0" cellspacing="0" style="position:absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(180deg, rgba(20,6,42,0.35) 0%, rgba(20,6,42,0.65) 100%);">
-                <tr><td>&nbsp;</td></tr>
-              </table>
-              <!-- Texto sobre la imagen -->
-              <table width="100%" cellpadding="0" cellspacing="0" style="position:absolute; top:0; left:0; width:100%; height:100%;">
+            <td style="padding:0; background-color:#1a0a2e; line-height:0; font-size:0;">
+              <!-- Imagen a ancho completo -->
+              <img src="{{header_image_url}}" width="600" alt=""
+                   style="display:block; width:100%; max-width:600px; height:auto;" />
+              <!-- Texto encima: tabla con margin negativo, compatible Gmail -->
+              <table width="600" cellpadding="0" cellspacing="0"
+                     style="width:100%; max-width:600px; margin-top:-110px;">
                 <tr>
-                  <td align="center" valign="middle" style="padding:28px 32px;">
-                    <p style="color:#f0dfff; margin:0 0 6px; font-size:11px; font-family:'Lato', sans-serif; letter-spacing:4px; text-transform:uppercase; font-weight:300; opacity:0.8;">tu dosis diaria de</p>
-                    <h1 style="color:#fff; margin:0; font-size:30px; font-family:'Playfair Display', serif; font-weight:600; letter-spacing:2px; text-shadow:0 2px 12px rgba(0,0,0,0.5);">
-                      ♫ MusicHub
+                  <td align="center" valign="middle"
+                      style="padding:0 32px 28px; height:110px;
+                             background: linear-gradient(180deg, rgba(20,6,42,0) 0%, rgba(20,6,42,0.72) 60%, rgba(20,6,42,0.85) 100%);">
+                    <p style="color:#f0dfff; margin:0 0 6px; font-size:11px;
+                              font-family:'Lato', sans-serif; letter-spacing:4px;
+                              text-transform:uppercase; font-weight:300;">
+                      tu dosis diaria de
+                    </p>
+                    <h1 style="color:#fff; margin:0; font-size:30px;
+                               font-family:'Playfair Display', serif; font-weight:600;
+                               letter-spacing:2px; text-shadow:0 2px 12px rgba(0,0,0,0.6);">
+                      &#9835; MusicHub
                     </h1>
-                    <div style="margin:10px auto 0; width:40px; height:1px; background:linear-gradient(90deg, transparent, #c4a8e8, transparent);"></div>
+                    <div style="margin:10px auto 0; width:40px; height:1px;
+                                background:linear-gradient(90deg, transparent, #c4a8e8, transparent);"></div>
                   </td>
                 </tr>
               </table>
@@ -44,7 +51,8 @@
           <!-- ─── INTRO ─── -->
           <tr>
             <td style="padding:32px 40px 20px;">
-              <p style="color:#2e1a44; font-size:15px; line-height:1.8; margin:0; font-family:'Lato', sans-serif; font-weight:300;">
+              <p style="color:#2e1a44; font-size:15px; line-height:1.8; margin:0;
+                        font-family:'Lato', sans-serif; font-weight:300;">
                 {{intro}}
               </p>
             </td>
@@ -70,7 +78,8 @@
           <!-- ─── OUTRO ─── -->
           <tr>
             <td style="padding:24px 40px 32px;">
-              <p style="color:#6b4d8a; font-size:14px; line-height:1.7; margin:0; font-style:italic; font-family:'Playfair Display', serif;">
+              <p style="color:#6b4d8a; font-size:14px; line-height:1.7; margin:0;
+                        font-style:italic; font-family:'Playfair Display', serif;">
                 {{outro}}
               </p>
             </td>
@@ -79,7 +88,9 @@
           <!-- ─── FOOTER ─── -->
           <tr>
             <td style="background-color:#ede5f5; padding:18px 40px; text-align:center; border-top:1px solid #d8cce8;">
-              <p style="color:#9c85b5; font-size:11px; margin:0; font-family:'Lato', sans-serif; letter-spacing:1.5px; text-transform:uppercase; font-weight:300;">
+              <p style="color:#9c85b5; font-size:11px; margin:0;
+                        font-family:'Lato', sans-serif; letter-spacing:1.5px;
+                        text-transform:uppercase; font-weight:300;">
                 Para oídos exigentes &nbsp;·&nbsp; MusicHub
               </p>
             </td>
