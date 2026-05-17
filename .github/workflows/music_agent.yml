@@ -2,12 +2,14 @@ name: MusicHub
 
 on:
   schedule:
-    - cron: '0 7 * * *'  # Cada día a las 8:00 UTC (10:00 Barcelona)
+    - cron: '0 7 * * *'  # Cada día a las 7:00 UTC (09:00 Barcelona)
   workflow_dispatch:      # Permite lanzarlo manualmente desde GitHub
 
 jobs:
   run-agent:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repo
