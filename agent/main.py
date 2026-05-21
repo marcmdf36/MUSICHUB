@@ -13,6 +13,11 @@ def run():
     candidates = fetch_candidates(GENRES, per_genre=10)
     print(f"   Encontradas: {len(candidates)} canciones")
 
+
+    if not candidates:
+        print("❌ No se encontraron candidatas. Abortando.")
+        return
+
     # 2. Preparar contexto
     candidates_text = format_candidates_for_llm(candidates)
     history_text = get_history_as_text()
@@ -53,9 +58,9 @@ def run():
     print(f"\n📋 Resumen: {len(final_songs)} canciones seleccionadas\n")
     for song in final_songs:
         print(f"  🎵 {song['artist']} - {song['title']} ({song['genre']}, {song['year']})")
-        print(f"     → {song['reason']}")
-        print(f"     🔗 {song['spotify_url']}")
-        print()
+        # print(f"     → {song['reason']}")
+        # print(f"     🔗 {song['spotify_url']}")
+        # print()
 
 
 if __name__ == "__main__":

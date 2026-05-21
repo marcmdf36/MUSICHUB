@@ -2,8 +2,6 @@ from pathlib import Path
 
 TEMPLATE_PATH = Path(__file__).parent.parent / "templates" / "email_template.html"
 
-HEADER_IMAGE_URL = "https://raw.githubusercontent.com/marcmdf36/MUSICHUB/main/docs/header.jpg"
-
 GENRE_EMOJIS = {
     "rock": "🎸",
     "indie": "🌿",
@@ -14,6 +12,7 @@ GENRE_EMOJIS = {
     "jazz": "🎷",
     "hiphop": "🎤",
     "soul": "💜",
+    "pop": "🎵",
 }
 
 
@@ -31,7 +30,6 @@ def build_email_html(songs: list[dict], intro: str, outro: str) -> str:
         for song in songs
     )
 
-    html = template.replace("{{header_image_url}}", HEADER_IMAGE_URL)
     html = template.replace("{{intro}}", intro)
     html = html.replace("{{songs_html}}", songs_html)
     html = html.replace("{{outro}}", outro)
@@ -42,36 +40,55 @@ def build_email_html(songs: list[dict], intro: str, outro: str) -> str:
 def build_song_card(song: dict, emoji: str, cover: str | None, url: str) -> str:
     """
     Genera el bloque HTML de una tarjeta de canción para el email de MusicHub.
-    Diseñado para encajar con el template musichub_template_v2.html.
+    Estructura: fila superior (carátula + info), fila inferior (descripción completa).
     """
 
     cover_td = (
         f"<td width='90' style='vertical-align:top; padding:0;'>"
         f"<img src='{cover}' width='90' height='90' "
-        f"style='display:block; border-radius:10px 0 0 10px; object-fit:cover;' "
+        f"style='display:block; border-radius:10px 0 0 0; object-fit:cover;' "
         f"alt='Portada'/></td>"
         if cover else ""
     )
 
     album_year = " · ".join(filter(None, [song.get("album", ""), str(song.get("year", ""))]))
-    reason    = song.get("reason", "")
+    reason     = song.get("reason", "")
+
+    reason_row = f"""
+              <!-- ─── Fila inferior: descripción ─── -->
+              <tr>
+                <td colspan="2"
+                    style="padding:10px 16px 14px;
+                           border-top:1px solid #e0d0f5;">
+                  <p class="song-reason song-reason-p"
+                     style="margin:0; font-size:13px; color:#4a3560;
+                            line-height:1.7; font-family:'Lato', Arial, sans-serif;
+                            font-weight:300;">
+                    {reason}
+                  </p>
+                </td>
+              </tr>
+    """ if reason else ""
 
     return f"""
         <tr>
-          <td style="padding:10px 40px 0;">
+          <td class="song-cell" style="padding:10px 32px 0;">
             <table width="100%" cellpadding="0" cellspacing="0"
+                   class="song-card"
                    style="background-color:#f0e8fa;
                           border-radius:10px;
                           overflow:hidden;
                           border-left:3px solid #9b6ecf;">
+
+              <!-- ─── Fila superior: carátula + info ─── -->
               <tr>
                 {cover_td}
-                <td style="padding:14px 18px; vertical-align:top;">
+                <td style="padding:14px 16px; vertical-align:middle;">
 
-                  <!-- Título + enlace -->
-                  <p style="margin:0 0 3px; font-size:15px; line-height:1.4;">
-                    <span style="font-size:16px;">{emoji}</span>
-                    <a href="{url}"
+                  <!-- Título -->
+                  <p class="song-title" style="margin:0 0 4px; font-size:15px; line-height:1.4;">
+                    <span>{emoji}</span>
+                    <a class="song-title-a" href="{url}"
                        style="color:#2e1a44;
                               text-decoration:none;
                               font-family:'Playfair Display', Georgia, serif;
@@ -82,7 +99,8 @@ def build_song_card(song: dict, emoji: str, cover: str | None, url: str) -> str:
                   </p>
 
                   <!-- Artista · Álbum · Año -->
-                  <p style="margin:0 0 8px;
+                  <p class="song-meta song-meta-p"
+                     style="margin:0;
                             font-size:12px;
                             color:#9b6ecf;
                             font-family:'Lato', Arial, sans-serif;
@@ -92,11 +110,11 @@ def build_song_card(song: dict, emoji: str, cover: str | None, url: str) -> str:
                     {song['artist']}{(' · ' + album_year) if album_year else ''}
                   </p>
 
-                  <!-- Motivo de la recomendación -->
-                  {f'<p style="margin:0; font-size:13px; color:#4a3560; line-height:1.6; font-family:Lato, Arial, sans-serif; font-weight:300;">{reason}</p>' if reason else ''}
-
                 </td>
               </tr>
+
+              {reason_row}
+
             </table>
           </td>
         </tr>
