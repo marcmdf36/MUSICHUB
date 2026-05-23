@@ -2,7 +2,7 @@ name: MusicHub
 
 on:
   schedule:
-    - cron: '0 4 * * *'  # Cada día a las 5:00 UTC (09:00 Barcelona)
+    - cron: '0 4 * * 1'  # Salta sobre las 9:30 Barcelona
   workflow_dispatch:      # Permite lanzarlo manualmente desde GitHub
 
 jobs:

@@ -14,10 +14,12 @@ ESTILO DE REFERENCIA (esto define el gusto editorial — úsalo como brújula):
 - Pop: The Weeknd, C. Tangana, Black Eyed Peas, Twenty One Pilots, Imagine Dragons, David Guetta, Sia
 - Classical: Max Richter, Erik Satie, Ludwig Göransson, Hans Zimmer, Chopin, Rachmaninov, Tchaikovsky, Nils Frahm
 
+
 CRITERIOS DE SELECCIÓN:
 - Elige canciones variadas: no repitas género ni artista.
+- OBLIGATORIO: incluye exactamente una canción de cada uno de estos géneros: {genre_list}. Ningún género puede quedar sin representación.
 - Prioriza canciones que encajen con el estilo de referencia de su género.
-- Usa la lista de referencia como brújula de estilo, no como fuente directa — prioriza artistas que no aparezcan en ella.
+- Usa la lista de referencia como brújula de estilo. Puedes seleccionar artistas que aparezcan en ella si son la mejor opción del pool.
 - Evita lo genérico: si hay dos opciones similares, quédate con la más interesante o menos obvia.
 - NO selecciones ninguna canción del historial de ya recomendadas.
 
